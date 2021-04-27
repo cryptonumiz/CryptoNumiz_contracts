@@ -1,0 +1,1 @@
+tonos-cli --url http://127.0.0.1 run $1 getWalletAddress '{"creator_public_key":"","creator_address":""}' --abi RootTokenContractNF.abi.json

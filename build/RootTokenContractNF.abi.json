@@ -1,0 +1,182 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"symbol","type":"bytes"},
+				{"name":"decimals","type":"uint8"},
+				{"name":"front_side_image","type":"bytes"},
+				{"name":"back_side_media","type":"bytes"},
+				{"name":"curator","type":"address"},
+				{"name":"creator","type":"address"},
+				{"name":"creator_percent","type":"uint8"},
+				{"name":"numi_event","type":"address"},
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"wallet_code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployWallet",
+			"inputs": [
+				{"name":"pubkey","type":"uint256"},
+				{"name":"tokenId","type":"uint256"},
+				{"name":"grams","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "deployEmptyWallet",
+			"inputs": [
+				{"name":"pubkey","type":"uint256"},
+				{"name":"grams","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "grant",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"tokenId","type":"uint256"},
+				{"name":"grams","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "mint",
+			"inputs": [
+				{"name":"tokenId","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "getWalletAddress",
+			"inputs": [
+				{"name":"creator_public_key","type":"uint256"},
+				{"name":"creator_address","type":"address"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "getLastMintedToken",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"tokenId","type":"uint256"}
+			]
+		},
+		{
+			"name": "getBackSide",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"bytes"}
+			]
+		},
+		{
+			"name": "getDetails",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"symbol","type":"bytes"},{"name":"decimals","type":"uint8"},{"name":"front_side_image","type":"bytes"},{"name":"curator","type":"address"},{"name":"creator","type":"address"},{"name":"curator_percent","type":"uint8"},{"name":"creator_percent","type":"uint8"},{"name":"numi_event","type":"address"},{"name":"root_public_key","type":"uint256"},{"name":"total_supply","type":"uint256"},{"name":"total_granted","type":"uint256"},{"name":"wallet_code","type":"cell"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "m_name",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_name","type":"bytes"}
+			]
+		},
+		{
+			"name": "m_symbol",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_symbol","type":"bytes"}
+			]
+		},
+		{
+			"name": "m_decimals",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_decimals","type":"uint8"}
+			]
+		},
+		{
+			"name": "m_front_side_image",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_front_side_image","type":"bytes"}
+			]
+		},
+		{
+			"name": "m_curator",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_curator","type":"address"}
+			]
+		},
+		{
+			"name": "m_creator_address",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_creator_address","type":"address"}
+			]
+		},
+		{
+			"name": "m_curator_percent",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_curator_percent","type":"uint8"}
+			]
+		},
+		{
+			"name": "m_creator_percent",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_creator_percent","type":"uint8"}
+			]
+		},
+		{
+			"name": "m_numi_event",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_numi_event","type":"address"}
+			]
+		},
+		{
+			"name": "m_wallet_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_wallet_code","type":"cell"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}
