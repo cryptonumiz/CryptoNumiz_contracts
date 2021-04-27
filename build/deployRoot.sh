@@ -15,7 +15,7 @@ function giver {
 }
 
 function get_address {
-    echo $(cat RootTokenContractDeploy.log | grep "Raw address:" | cut -d ' ' -f 3)
+    echo $(cat $CONTRACT_NAME.log | grep "Raw address:" | cut -d ' ' -f 3)
 }
 
 function genaddr {
