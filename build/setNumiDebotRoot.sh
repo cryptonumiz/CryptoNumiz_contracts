@@ -1,0 +1,1 @@
+tonos-cli --url http://net.ton.dev call $1 setNumiUserRoot '{"_root_address":"'$2'"}' --abi NumiDebot.abi.json --sign NumiDebot.keys.json

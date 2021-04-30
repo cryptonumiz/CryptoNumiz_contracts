@@ -1,0 +1,57 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"root_public_key","type":"uint256"},
+				{"name":"user_code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployUser",
+			"inputs": [
+				{"name":"_owner_address","type":"address"},
+				{"name":"_username","type":"bytes"},
+				{"name":"_bio","type":"bytes"},
+				{"name":"grams","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "getExpectedAddress",
+			"inputs": [
+				{"name":"_owner_address","type":"address"},
+				{"name":"_owner_pubkey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value","type":"address"}
+			]
+		},
+		{
+			"name": "getDetails",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"root_public_key","type":"uint256"},{"name":"user_code","type":"cell"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "setCode",
+			"inputs": [
+				{"name":"newcode","type":"cell"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}

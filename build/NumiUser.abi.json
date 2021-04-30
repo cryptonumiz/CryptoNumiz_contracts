@@ -1,0 +1,87 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"username","type":"bytes"},
+				{"name":"bio","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setUsername",
+			"inputs": [
+				{"name":"_username","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setBio",
+			"inputs": [
+				{"name":"_bio","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDetails",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"root_address","type":"address"},{"name":"owner_address","type":"address"},{"name":"owner_pubkey","type":"uint256"},{"name":"username","type":"bytes"},{"name":"bio","type":"bytes"},{"name":"balance","type":"uint128"},{"name":"code","type":"cell"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "setCode",
+			"inputs": [
+				{"name":"newcode","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "m_root_address",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_root_address","type":"address"}
+			]
+		},
+		{
+			"name": "m_owner_address",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_owner_address","type":"address"}
+			]
+		},
+		{
+			"name": "m_username",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_username","type":"bytes"}
+			]
+		},
+		{
+			"name": "m_bio",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_bio","type":"bytes"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"m_root_address","type":"address"},
+		{"key":2,"name":"m_owner_address","type":"address"},
+		{"key":3,"name":"m_owner_pubkey","type":"uint256"},
+		{"key":4,"name":"m_code","type":"cell"}
+	],
+	"events": [
+	]
+}
