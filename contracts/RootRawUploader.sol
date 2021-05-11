@@ -3,7 +3,7 @@ pragma AbiHeader expire;
 pragma AbiHeader pubkey;
 pragma AbiHeader time;
 
-import "./IRootRawUploader.sol";
+import "./interfaces/IRootRawUploader.sol";
 import "./RawUploader.sol";
 
 contract RootRawUploader is IRootRawUploader {
