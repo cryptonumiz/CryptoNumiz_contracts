@@ -1,0 +1,1 @@
+tonos-cli --url http://net.ton.dev call $1 deployEvent '{"creator_address":"0:4feb189093a382d0a26ff530736e3e2e788626bb69878a5ff6f7e003cacfdf56","title":"74657374206576656e74","description":"74657374206576656e74206465736372697074696f6e","start_date":"1620137467","end_date":"1620645067"}' --abi ./RootNumiEvent.abi.json --sign ./RootNumiEvent.keys.json

@@ -1,0 +1,121 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"description","type":"bytes"},
+				{"name":"start_date","type":"uint64"},
+				{"name":"end_date","type":"uint64"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setCoverImage",
+			"inputs": [
+				{"name":"uploader_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setSubstrateImage",
+			"inputs": [
+				{"name":"uploader_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "receiveData",
+			"inputs": [
+				{"name":"_data","type":"bytes[]"},
+				{"name":"payload","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getDetails",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"root_address","type":"address"},{"name":"creator_address","type":"address"},{"name":"title","type":"bytes"},{"name":"description","type":"bytes"},{"name":"start_date","type":"uint64"},{"name":"end_date","type":"uint64"},{"name":"cover_image","type":"bytes[]"},{"name":"substrate_image","type":"bytes[]"}],"name":"value0","type":"tuple"}
+			]
+		},
+		{
+			"name": "setCode",
+			"inputs": [
+				{"name":"newcode","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "m_creator_address",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_creator_address","type":"address"}
+			]
+		},
+		{
+			"name": "m_title",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_title","type":"bytes"}
+			]
+		},
+		{
+			"name": "m_description",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_description","type":"bytes"}
+			]
+		},
+		{
+			"name": "m_start_date",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_start_date","type":"uint64"}
+			]
+		},
+		{
+			"name": "m_end_date",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_end_date","type":"uint64"}
+			]
+		},
+		{
+			"name": "m_cover_image",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_cover_image","type":"bytes[]"}
+			]
+		},
+		{
+			"name": "m_substrate_image",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_substrate_image","type":"bytes[]"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"m_root_address","type":"address"},
+		{"key":2,"name":"m_creator_address","type":"address"},
+		{"key":3,"name":"m_title","type":"bytes"},
+		{"key":4,"name":"m_code","type":"cell"}
+	],
+	"events": [
+	]
+}
