@@ -7,32 +7,9 @@
 			"inputs": [
 				{"name":"description","type":"bytes"},
 				{"name":"start_date","type":"uint64"},
-				{"name":"end_date","type":"uint64"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "setCoverImage",
-			"inputs": [
-				{"name":"uploader_addr","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "setSubstrateImage",
-			"inputs": [
-				{"name":"uploader_addr","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "receiveData",
-			"inputs": [
-				{"name":"_data","type":"bytes[]"},
-				{"name":"payload","type":"bytes"}
+				{"name":"end_date","type":"uint64"},
+				{"name":"cover_image","type":"address"},
+				{"name":"substrate_image","type":"address"}
 			],
 			"outputs": [
 			]
@@ -42,7 +19,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"components":[{"name":"root_address","type":"address"},{"name":"creator_address","type":"address"},{"name":"title","type":"bytes"},{"name":"description","type":"bytes"},{"name":"start_date","type":"uint64"},{"name":"end_date","type":"uint64"},{"name":"cover_image","type":"bytes[]"},{"name":"substrate_image","type":"bytes[]"}],"name":"value0","type":"tuple"}
+				{"components":[{"name":"root_address","type":"address"},{"name":"creator_address","type":"address"},{"name":"title","type":"bytes"},{"name":"description","type":"bytes"},{"name":"start_date","type":"uint64"},{"name":"end_date","type":"uint64"},{"name":"cover_image","type":"address"},{"name":"substrate_image","type":"address"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{
@@ -98,7 +75,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"m_cover_image","type":"bytes[]"}
+				{"name":"m_cover_image","type":"address"}
 			]
 		},
 		{
@@ -106,7 +83,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"m_substrate_image","type":"bytes[]"}
+				{"name":"m_substrate_image","type":"address"}
 			]
 		}
 	],

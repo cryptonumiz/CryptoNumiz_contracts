@@ -9,14 +9,9 @@ interface INumiEvent {
         string description;
         uint64 start_date;
         uint64 end_date;
-        bytes[] cover_image;
-        bytes[] substrate_image;
+        address cover_image;
+        address substrate_image;
     }
-
-    function setCoverImage(address uploader_addr) external;
-    function setSubstrateImage(address uploader_addr) external;
-
-    function receiveData(bytes[] _data, string payload) external;
 
     function getDetails() external view returns (INumiEventDetails);
 }

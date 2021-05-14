@@ -18,7 +18,9 @@
 				{"name":"title","type":"bytes"},
 				{"name":"description","type":"bytes"},
 				{"name":"start_date","type":"uint64"},
-				{"name":"end_date","type":"uint64"}
+				{"name":"end_date","type":"uint64"},
+				{"name":"cover_image","type":"address"},
+				{"name":"substrate_image","type":"address"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}

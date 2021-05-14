@@ -35,7 +35,7 @@ contract RootNumiEvent is IRootNumiEvent {
         _;
     }
 
-    function deployEvent(address creator_address, string title, string description, uint64 start_date, uint64 end_date) external override onlyOwner returns (address) {
+    function deployEvent(address creator_address, string title, string description, uint64 start_date, uint64 end_date, address cover_image, address substrate_image) external override onlyOwner returns (address) {
         require(msg.pubkey() != 0, ERROR_NO_PUBKEY);
         require(title.byteLength() > 0, ERROR_NO_TITLE);
         require(description.byteLength() > 0, ERROR_NO_DESCRIPTION);
@@ -45,7 +45,7 @@ contract RootNumiEvent is IRootNumiEvent {
 
         uint256 pubkey = msg.pubkey();
         address addr = new NumiEvent{
-            value: 1 ton,
+            value: 0.05 ton,
             code: m_event_code,
             pubkey: pubkey,
             varInit: {
@@ -54,7 +54,7 @@ contract RootNumiEvent is IRootNumiEvent {
                 m_title: title,
                 m_code: m_event_code
             }
-        }(description,start_date,end_date);
+        }(description,start_date,end_date,cover_image,substrate_image);
 
         return addr;
     }
