@@ -3,10 +3,10 @@ pragma AbiHeader expire;
 pragma AbiHeader pubkey;
 pragma AbiHeader time;
 
-import "./interfaces/IRootRawUploader.sol";
-import "./RawUploader.sol";
+import "./interfaces/IRootMultipartData.sol";
+import "./MultipartData.sol";
 
-contract RootRawUploader is IRootRawUploader {
+contract RootMultipartData is IRootMultipartData {
     // Error codes:
     uint constant ERROR_NO_SENDER = 100;
     uint constant ERROR_NO_PUBKEY = 101;
@@ -16,16 +16,16 @@ contract RootRawUploader is IRootRawUploader {
 
     // State:
     uint256 m_root_public_key;
-    TvmCell m_raw_uploader_code;
+    TvmCell m_multipart_data_code;
     uint8 m_max_chunks_count;
 
-    constructor(uint256 root_public_key, TvmCell raw_uploader_code) public {
+    constructor(uint256 root_public_key, TvmCell multipart_data_code) public {
         require(root_public_key != 0, ERROR_NO_PUBKEY);
         tvm.accept();
 
         m_root_public_key = root_public_key;
-        m_raw_uploader_code = raw_uploader_code;
-        m_max_chunks_count = 11; // ~165kb
+        m_multipart_data_code = multipart_data_code;
+        m_max_chunks_count = 13; // ~195kb
     }
 
     modifier onlyOwner {
@@ -33,20 +33,20 @@ contract RootRawUploader is IRootRawUploader {
         _;
     }
 
-    function deployUploader(uint8 chunks_count) external override returns (address) {
+    function deployMultipartData(uint8 chunks_count) external override returns (address) {
         require(msg.pubkey() != 0, ERROR_NO_PUBKEY);
         require(chunks_count <= m_max_chunks_count, ERROR_CHUNKS_COUNT_GREATER_THAN_MAX);
         tvm.accept();
 
         uint256 pubkey = msg.pubkey();
-        address addr = new RawUploader{
+        address addr = new MultipartData{
             value: 2 ton,
-            code: m_raw_uploader_code,
+            code: m_multipart_data_code,
             pubkey: pubkey,
             varInit: {
                 m_root_address: address(this),
-                m_creator_pubkey: pubkey,
-                m_code: m_raw_uploader_code,
+                m_owner_pubkey: pubkey,
+                m_code: m_multipart_data_code,
                 m_chunks_count: chunks_count
             }
         }();
@@ -59,10 +59,10 @@ contract RootRawUploader is IRootRawUploader {
         m_max_chunks_count = max_chunks_count;
     }
 
-    function getDetails() external override view returns (IRootRawUploaderDetails) {
-        return IRootRawUploaderDetails(
+    function getDetails() external override view returns (IRootMultipartDataDetails) {
+        return IRootMultipartDataDetails(
             m_root_public_key,
-            m_raw_uploader_code
+            m_multipart_data_code
         );
     }
 

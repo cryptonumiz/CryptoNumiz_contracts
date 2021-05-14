@@ -6,13 +6,13 @@
 			"name": "constructor",
 			"inputs": [
 				{"name":"root_public_key","type":"uint256"},
-				{"name":"raw_uploader_code","type":"cell"}
+				{"name":"multipart_data_code","type":"cell"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "deployUploader",
+			"name": "deployMultipartData",
 			"inputs": [
 				{"name":"chunks_count","type":"uint8"}
 			],
@@ -33,7 +33,7 @@
 			"inputs": [
 			],
 			"outputs": [
-				{"components":[{"name":"root_public_key","type":"uint256"},{"name":"uploader_code","type":"cell"}],"name":"value0","type":"tuple"}
+				{"components":[{"name":"root_public_key","type":"uint256"},{"name":"multipart_data_code","type":"cell"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{

@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-CONTRACT_NAME=RootRawUploader
+CONTRACT_NAME=RootMultipartData
 giver=0:b5e9240fc2d2f1ff8cbb1d1dee7fb7cae155e5f6320e585fcc685698994a19a5
 function giver {
-    tonos-cli --url $NETWORK call $giver sendTransaction '{"dest":"'$1'","value":100000000000,"bounce":false}' --abi ../giver/giver.abi.json --sign ../giver/giver.keys.json  
+    tonos-cli --url $NETWORK call $giver sendTransaction '{"dest":"'$1'","value":100000000000,"bounce":false}' --abi ../../giver/giver.abi.json --sign ../../giver/giver.keys.json  
 }
 
 function get_address {
@@ -16,7 +16,7 @@ function genaddr {
 }
 
 function gen_user_code {
-    tvm_linker decode --tvc RawUploader.tvc > code.txt
+    tvm_linker decode --tvc MultipartData.tvc > code.txt
 }
 
 function get_user_code {
@@ -28,7 +28,7 @@ function get_pubkey {
 }
 
 function deploy_root {
-    tonos-cli --url $NETWORK deploy $CONTRACT_NAME.tvc '{"root_public_key":"0x'$TVM_ROOT_PUBKEY'","raw_uploader_code":"'$TVM_USER_CODE'"}' --abi $CONTRACT_NAME.abi.json --sign $CONTRACT_NAME.keys.json
+    tonos-cli --url $NETWORK deploy $CONTRACT_NAME.tvc '{"root_public_key":"0x'$TVM_ROOT_PUBKEY'","multipart_data_code":"'$TVM_USER_CODE'"}' --abi $CONTRACT_NAME.abi.json --sign $CONTRACT_NAME.keys.json
 }
 
 LOCALNET=http://127.0.0.1
