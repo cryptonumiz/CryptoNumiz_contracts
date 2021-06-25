@@ -1,0 +1,106 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "accept",
+			"inputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"description","type":"bytes"},{"name":"frontSideStorage","type":"address"},{"name":"backSideStorage","type":"address"},{"name":"creatorAddress","type":"address"},{"name":"creatorPercent","type":"uint8"},{"name":"curatorAddress","type":"address"},{"name":"curatorPercent","type":"uint8"},{"name":"numiEventAddress","type":"address"},{"name":"isForSale","type":"bool"},{"name":"isForAuction","type":"bool"}],"name":"item","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "approve",
+			"inputs": [
+				{"name":"spender","type":"address"},
+				{"name":"nftHash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "disapprove",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "transfer",
+			"inputs": [
+				{"name":"nftHash","type":"uint256"},
+				{"name":"dest","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "internalTransfer",
+			"inputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"description","type":"bytes"},{"name":"frontSideStorage","type":"address"},{"name":"backSideStorage","type":"address"},{"name":"creatorAddress","type":"address"},{"name":"creatorPercent","type":"uint8"},{"name":"curatorAddress","type":"address"},{"name":"curatorPercent","type":"uint8"},{"name":"numiEventAddress","type":"address"},{"name":"isForSale","type":"bool"},{"name":"isForAuction","type":"bool"}],"name":"item","type":"tuple"},
+				{"name":"creatorAddress","type":"address"},
+				{"name":"creatorPubkey","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "transferFrom",
+			"inputs": [
+				{"name":"from","type":"address"},
+				{"name":"to","type":"address"},
+				{"components":[{"name":"name","type":"bytes"},{"name":"description","type":"bytes"},{"name":"frontSideStorage","type":"address"},{"name":"backSideStorage","type":"address"},{"name":"creatorAddress","type":"address"},{"name":"creatorPercent","type":"uint8"},{"name":"curatorAddress","type":"address"},{"name":"curatorPercent","type":"uint8"},{"name":"numiEventAddress","type":"address"},{"name":"isForSale","type":"bool"},{"name":"isForAuction","type":"bool"}],"name":"item","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "internalTransferFrom",
+			"inputs": [
+				{"name":"to","type":"address"},
+				{"components":[{"name":"name","type":"bytes"},{"name":"description","type":"bytes"},{"name":"frontSideStorage","type":"address"},{"name":"backSideStorage","type":"address"},{"name":"creatorAddress","type":"address"},{"name":"creatorPercent","type":"uint8"},{"name":"curatorAddress","type":"address"},{"name":"curatorPercent","type":"uint8"},{"name":"numiEventAddress","type":"address"},{"name":"isForSale","type":"bool"},{"name":"isForAuction","type":"bool"}],"name":"item","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "m_creatorAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_creatorAddress","type":"address"}
+			]
+		},
+		{
+			"name": "m_creatorPubkey",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_creatorPubkey","type":"uint256"}
+			]
+		},
+		{
+			"name": "nftItems",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"description","type":"bytes"},{"name":"frontSideStorage","type":"address"},{"name":"backSideStorage","type":"address"},{"name":"creatorAddress","type":"address"},{"name":"creatorPercent","type":"uint8"},{"name":"curatorAddress","type":"address"},{"name":"curatorPercent","type":"uint8"},{"name":"numiEventAddress","type":"address"},{"name":"isForSale","type":"bool"},{"name":"isForAuction","type":"bool"}],"name":"nftItems","type":"map(uint256,tuple)"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"m_creatorAddress","type":"address"},
+		{"key":2,"name":"m_creatorPubkey","type":"uint256"},
+		{"key":3,"name":"m_code","type":"cell"}
+	],
+	"events": [
+	]
+}
