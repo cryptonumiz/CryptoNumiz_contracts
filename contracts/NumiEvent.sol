@@ -1,70 +1,86 @@
-pragma ton-solidity >= 0.39.0;
+pragma ton-solidity >= 0.46.0;
 pragma AbiHeader expire;
 pragma AbiHeader pubkey;
 pragma AbiHeader time;
 
-import "./interfaces/INumiEvent.sol";
+import "NumizCollectionRoot.sol";
 
-contract NumiEvent is INumiEvent {
+contract NumiEvent {
     // Error codes:
-    uint constant ERROR_NO_PUBKEY = 101;
-    uint constant ERROR_SENDER_IS_NOT_MY_OWNER = 102;
-    uint constant ERROR_NOT_ALLOWED_SENDER = 103;
+    uint constant ERROR_NO_SALT = 101;
+    uint constant ERROR_SENDER_IS_NOT_MY_ROOT = 102;
+    uint constant ERROR_TITLE_IS_EMPTY = 103;
+    uint constant ERROR_NO_SENDER = 104;
 
     // State:
-    address static m_root_address;
-    address public static m_creator_address;
-    string public static m_title;
+    address static public m_ownerAddress;
+    address static m_rootAddress;
+    string static public m_title;
     string public m_description;
-    uint64 public m_start_date;
-    uint64 public m_end_date;
+    uint64 public m_startTimestamp;
+    uint64 public m_endTimestamp;
+    address public m_coverImage;
+    address public m_substrateImage;
 
-    address public m_cover_image;
-    address public m_substrate_image;
+    // Structs:
+    struct NumiEventDetails {
+        address ownerAddress;
+        string title;
+        string description;
+        uint64 startTimestamp;
+        uint64 endTimestamp;
+        address coverImage;
+        address substrateImage;
+    }
 
-    TvmCell static m_code;
-
-    constructor(string description, uint64 start_date, uint64 end_date, address cover_image, address substrate_image) public {
-        require(tvm.pubkey() != 0, ERROR_NO_PUBKEY);
-        require(msg.sender == m_root_address, ERROR_SENDER_IS_NOT_MY_OWNER);
-        tvm.accept();
-
+    constructor(
+        string description,
+        uint64 startTimestamp,
+        uint64 endTimestamp,
+        address coverImage,
+        address substrateImage
+    ) public {
+        require(msg.sender == m_rootAddress, ERROR_SENDER_IS_NOT_MY_ROOT);
+        require(!m_title.empty(), ERROR_TITLE_IS_EMPTY);
+        
         m_description = description;
-        m_start_date = start_date;
-        m_end_date = end_date;
-        m_cover_image = cover_image;
-        m_substrate_image = substrate_image;
+        m_startTimestamp = startTimestamp;
+        m_endTimestamp = endTimestamp;
+        m_coverImage = coverImage;
+        m_substrateImage = substrateImage;
     }
 
-    modifier onlyOwner {
-        require(msg.pubkey() == tvm.pubkey(), ERROR_SENDER_IS_NOT_MY_OWNER);
-        _;
+    function deployNumizCollectionRoot(TvmCell numizCollectionRootImage) public view {
+        require(msg.sender != address(0), ERROR_NO_SENDER);
+
+        TvmBuilder saltBuilder;
+        saltBuilder.store(sender);
+        TvmCell code = tvm.setCodeSalt(
+            numizCollectionRootImage.toSlice().loadRef(),
+            saltBuilder.toCell()
+        );
+
+        new NumiEvent{
+            value: 0,
+            flag: 64,
+            code: code,
+            pubkey: tvm.pubkey(),
+            varInit: {
+                m_collectionName: m_title,
+                m_eventAddress: address(this)
+            }
+        }();
     }
 
-    function getDetails() external override view returns (INumiEventDetails) {
-        return INumiEventDetails(
-            m_root_address,
-            m_creator_address,
+    function getDetails() public view returns (NumiEventDetails) {
+        return NumiEventDetails(
+            m_ownerAddress,
             m_title,
             m_description,
-            m_start_date,
-            m_end_date,
-            m_cover_image,
-            m_substrate_image
+            m_startTimestamp,
+            m_endTimestamp,
+            m_coverImage,
+            m_substrateImage
         );
-    }
-
-    // Function that changes the code of current contract.
-	function setCode(TvmCell newcode) public pure onlyOwner {
-		tvm.setcode(newcode);
-		tvm.setCurrentCode(newcode);
-		onCodeUpgrade();
-	}
-
-	function onCodeUpgrade() private pure {
-	}
-
-    // fallback function
-    fallback() external pure {
     }
 }
